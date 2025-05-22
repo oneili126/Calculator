@@ -6,9 +6,9 @@ public class Calculator implements ActionListener
     JFrame frame; //creates a window
     JTextField textField; //will hold my result
     JButton[] numberButtons = new JButton[10]; //an array of the numbers 0-9
-    JButton[] functionButtons = new JButton[8]; //an array of the operators
+    JButton[] functionButtons = new JButton[9]; //an array of the operators
     JButton addButton, subButton, mulButton, divButton; //functions to be implemented...
-    JButton decButton, equButton, delButton, clrButton; //functions continued
+    JButton decButton, equButton, delButton, clrButton, negButton; //functions continued
     JPanel panel; //panel to organize the gui
 
     Font myFont = new Font("Comic Sans",Font.BOLD,30); //font I want to use throughout the app
@@ -37,8 +37,9 @@ public class Calculator implements ActionListener
         divButton = new JButton("/");
         decButton = new JButton(".");
         equButton = new JButton("=");
-        delButton = new JButton("Delete");
+        delButton = new JButton("Del");
         clrButton = new JButton("Clear");
+        negButton = new JButton("neg");
 
         functionButtons[0] = addButton;
         functionButtons[1] = subButton;
@@ -48,8 +49,9 @@ public class Calculator implements ActionListener
         functionButtons[5] = equButton;
         functionButtons[6] = delButton;
         functionButtons[7] = clrButton;
+        functionButtons[8] = negButton;
 
-        for (int i = 0; i < 8; i++){
+        for (int i = 0; i < 9; i++){
             functionButtons[i].addActionListener(this);
             functionButtons[i].setFont(myFont);
             functionButtons[i].setFocusable(false); // outline
@@ -62,8 +64,9 @@ public class Calculator implements ActionListener
             numberButtons[i].setFocusable(false); // outline
         }
 
-        delButton.setBounds(50,430,145,50);
-        clrButton.setBounds(205,430,145,50);
+        negButton.setBounds(50,430,100,50);
+        delButton.setBounds(150,430,100,50);
+        clrButton.setBounds(250,430,100,50);
 
         //creating panel to hold buttons in a grid layout
         panel = new JPanel();
@@ -96,6 +99,7 @@ public class Calculator implements ActionListener
 
 
         frame.add(textField);
+        frame.add(negButton);
         frame.add(delButton);
         frame.add(clrButton);
         frame.add(panel);
@@ -187,6 +191,12 @@ public class Calculator implements ActionListener
             for (int i = 0; i < string.length()-1;i++){
                 textField.setText(textField.getText()+string.charAt(i));
             }
+        }
+
+        if(e.getSource()==negButton) {
+            double temp = Double.parseDouble(textField.getText());
+            temp *= -1;
+            textField.setText(String.valueOf(temp));
         }
 
 
