@@ -7,7 +7,7 @@ public class Calculator implements ActionListener
     JTextField textField; //will hold my result
     JButton[] numberButtons = new JButton[10]; //an array of the numbers 0-9
     JButton[] functionButtons = new JButton[8]; //an array of the operators
-    JButton addButton, subButton, multButton, divideButton; //functions to be implemented...
+    JButton addButton, subButton, mulButton, divButton; //functions to be implemented...
     JButton decButton, equButton, delButton, clrButton; //functions continued
     JPanel panel; //panel to organize the gui
 
@@ -30,8 +30,48 @@ public class Calculator implements ActionListener
         textField.setFont(myFont);
         textField.setEditable(false);
 
+        //initializing buttons
+        addButton = new JButton("+");
+        subButton = new JButton("-");
+        mulButton = new JButton("*");
+        divButton = new JButton("/");
+        decButton = new JButton(".");
+        equButton = new JButton("=");
+        delButton = new JButton("Delete");
+        clrButton = new JButton("Clear");
+
+        functionButtons[0] = addButton;
+        functionButtons[1] = subButton;
+        functionButtons[2] = mulButton;
+        functionButtons[3] = divButton;
+        functionButtons[4] = decButton;
+        functionButtons[5] = equButton;
+        functionButtons[6] = delButton;
+        functionButtons[7] = clrButton;
+
+        for (int i = 0; i < 8; i++){
+            functionButtons[i].addActionListener(this);
+            functionButtons[i].setFont(myFont);
+            functionButtons[i].setFocusable(false); // outline
+        }
+
+        for (int i = 0; i < 10; i++){
+            numberButtons[i] = new JButton(String.valueOf(i)); //initializes the buttons
+            numberButtons[i].addActionListener(this);
+            numberButtons[i].setFont(myFont);
+            numberButtons[i].setFocusable(false); // outline
+        }
+
+        delButton.setBounds(50,430,145,50);
+        clrButton.setBounds(205,430,145,50);
+
+
+
+
 
         frame.add(textField);
+        frame.add(delButton);
+        frame.add(clrButton);
         frame.setVisible(true);
 
     }
