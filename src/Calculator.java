@@ -11,7 +11,12 @@ public class Calculator implements ActionListener
     JButton decButton, equButton, delButton, clrButton, negButton; //functions continued
     JPanel panel; //panel to organize the gui
 
-    Font myFont = new Font("Comic Sans",Font.BOLD,30); //font I want to use throughout the app
+    Font myFont = new Font("Montserrat",Font.PLAIN,30); //font I want to use throughout the app
+
+    Color lightestPurple = new Color(229, 200, 230);
+    Color dustyPurple = new Color(178, 136, 192);
+    Color regPurple = new Color(126, 90, 155);
+    Color deepPurple = new Color(99, 69, 138);
 
     double num1 = 0,num2 = 0, result = 0; //variables that will be used for calculations
     char operator; //function asked to be used
@@ -22,6 +27,7 @@ public class Calculator implements ActionListener
         frame = new JFrame("Calculator");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(420,550);
+        frame.getContentPane().setBackground(dustyPurple);
         frame.setLayout(null);
 
         //initiating text field
@@ -29,6 +35,7 @@ public class Calculator implements ActionListener
         textField.setBounds(50,25,300,50);
         textField.setFont(myFont);
         textField.setEditable(false);
+        textField.setBackground(lightestPurple);
 
         //initializing buttons
         addButton = new JButton("+");
@@ -39,7 +46,7 @@ public class Calculator implements ActionListener
         equButton = new JButton("=");
         delButton = new JButton("Del");
         clrButton = new JButton("Clear");
-        negButton = new JButton("neg");
+        negButton = new JButton("Neg");
 
         functionButtons[0] = addButton;
         functionButtons[1] = subButton;
@@ -72,7 +79,7 @@ public class Calculator implements ActionListener
         panel = new JPanel();
         panel.setBounds(50,100,300,300);
         panel.setLayout(new GridLayout(4,4,10,10));
-        panel.setBackground(Color.PINK);
+        panel.setBackground(deepPurple);
 
         //add buttons to panel
         panel.add(numberButtons[1]);
@@ -193,6 +200,7 @@ public class Calculator implements ActionListener
             }
         }
 
+        //makes a value negative
         if(e.getSource()==negButton) {
             double temp = Double.parseDouble(textField.getText());
             temp *= -1;
