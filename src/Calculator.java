@@ -110,11 +110,71 @@ public class Calculator implements ActionListener
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
+        //when the number buttons are pushed, the number is reflected in the text field
         for(int i = 0; i < 10; i++){
             if (e.getSource() == numberButtons[i]) {
                 textField.setText(textField.getText().concat(String.valueOf(i)));
             }
         }
+
+        //when the decimal button is pushed, the text field has a .
+        if(e.getSource() == decButton){
+            textField.setText(textField.getText().concat("."));
+        }
+
+        //functionality for addition Button
+        if(e.getSource() == addButton){
+            num1 = Double.parseDouble(textField.getText());
+            operator = '+';
+            textField.setText("");
+        }
+
+        //functionality for subtraction button
+        if(e.getSource() == subButton){
+            num1 = Double.parseDouble(textField.getText());
+            operator = '-';
+            textField.setText("");
+        }
+
+        //functionality for multiplication button
+        if(e.getSource() == mulButton){
+            num1 = Double.parseDouble(textField.getText());
+            operator = '*';
+            textField.setText("");
+        }
+
+        //functionality for division button
+        if(e.getSource() == divButton){
+            num1 = Double.parseDouble(textField.getText());
+            operator = '/';
+            textField.setText("");
+        }
+
+        //functionality for equals button and calculates the result
+        if(e.getSource()==equButton){
+            num2 = Double.parseDouble(textField.getText());
+
+            switch (operator){
+                case'+':
+                    result = num1 + num2;
+                    break;
+                case'-':
+                    result = num1 - num2;
+                    break;
+                case'*':
+                    result = num1 * num2;
+                    break;
+                case'/':
+                    result = num1 / num2;
+                    break;
+            }
+
+            textField.setText(String.valueOf(result));
+            num1 = result; //allows for continued operations
+
+        }
+
 
     }
 }
