@@ -175,6 +175,22 @@ public class Calculator implements ActionListener
 
         }
 
+        //clears the text field when clear button is pressed
+        if(e.getSource()==clrButton) {
+            textField.setText("");
+        }
+
+        //removes the last character from the text field
+        if(e.getSource()==delButton) {
+            String string = textField.getText();
+            textField.setText("");
+            for (int i = 0; i < string.length()-1;i++){
+                textField.setText(textField.getText()+string.charAt(i));
+            }
+        }
+
+
+
 
     }
 }
