@@ -65,6 +65,32 @@ public class Calculator implements ActionListener
         delButton.setBounds(50,430,145,50);
         clrButton.setBounds(205,430,145,50);
 
+        //creating panel to hold buttons in a grid layout
+        panel = new JPanel();
+        panel.setBounds(50,100,300,300);
+        panel.setLayout(new GridLayout(4,4,10,10));
+        panel.setBackground(Color.PINK);
+
+        //add buttons to panel
+        panel.add(numberButtons[1]);
+        panel.add(numberButtons[2]);
+        panel.add(numberButtons[3]);
+        panel.add(addButton);           //end of row 1
+        panel.add(numberButtons[4]);
+        panel.add(numberButtons[5]);
+        panel.add(numberButtons[6]);
+        panel.add(subButton);           //end of row 2
+        panel.add(numberButtons[7]);
+        panel.add(numberButtons[8]);
+        panel.add(numberButtons[9]);
+        panel.add(mulButton);           //end of row 3
+        panel.add(decButton);
+        panel.add(numberButtons[0]);
+        panel.add(equButton);
+        panel.add(divButton);           //emd of row 4
+
+
+
 
 
 
@@ -72,6 +98,7 @@ public class Calculator implements ActionListener
         frame.add(textField);
         frame.add(delButton);
         frame.add(clrButton);
+        frame.add(panel);
         frame.setVisible(true);
 
     }
